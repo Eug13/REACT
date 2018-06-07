@@ -286,12 +286,39 @@ class Clock extends React.Component {
 }
 
 
+class Clockmini extends Clock {
+    constructor(props) {
+        console.log(props);
+        super(props);
+          
+        }
+
+        componentDidMount() {
+            this.timerID = setInterval(
+                () => this.tick(),
+                10000
+            );
+        }
+    
+        componentWillUnmount() {
+            clearInterval(this.timerID);
+        }
+
+        tick() {
+            this.setState({
+                date: new Date()
+            });
+    }
+}
+
+
 function App() {
     return (
         <div>
             <Clock name='Casio' />
             <Clock name='Vostok' />
             <Clock name='Suunto' />
+            <Clockmini name='mini' />
         </div>
     );
 }
