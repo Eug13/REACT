@@ -327,3 +327,5 @@ render(
     <App/>,
     document.getElementById('root')
 );
+
+//Example 5
