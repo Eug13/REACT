@@ -867,47 +867,362 @@ import { render } from 'react-dom'
 
 //must check it out
 
-const scaleNames = {
-    c: 'Celsius',
-    f: 'Fahrenheit'
-  };
-  
-  class TemperatureInput extends React.Component {
+// function toCelsius(fahrenheit) {
+//     return (fahrenheit - 32) * 5 / 9;
+// }
+
+// function toFahrenheit(celsius) {
+//     return (celsius * 9 / 5) + 32;
+// }
+
+// function tryConvert(temperature,convert){
+//     const input = parseFloat(temperature);
+//     if(Number.isNaN(input)){
+//         return '';
+//     }
+//     const output = convert(input);
+//     const rounded = Math.round(output * 1000)/1000;
+//     return rounded.toString();
+// }
+
+
+// const scaleNames = {
+//     c: 'Celsius',
+//     f: 'Fahrenheit'
+// };
+
+// class TemperatureInput extends React.Component {
+//     constructor(props) {
+//         super(props);
+//         this.handleChange = this.handleChange.bind(this);
+//         this.state = { temperature: '' };
+//     }
+
+//     handleChange(e) {
+//         // this.setState({ temperature: e.target.value });
+//         this.props.onTemperatureChange(e.target.value);
+//     }
+
+//     render() {
+//         const temperature = this.props.temperature;
+//         // const temperature = this.state.temperature;
+//         const scale = this.props.scale;
+//         return (
+//             <fieldset>
+//                 <legend>Enter temperature in {scaleNames[scale]}:</legend>
+//                 <input value={temperature}
+//                     onChange={this.handleChange} />
+//             </fieldset>
+//         );
+//     }
+// }
+
+// class Calculator extends React.Component {
+
+//     constructor(props){
+//         super(props);
+//         this.handleCelsiusChange = this.handleCelsiusChange.bind(this);
+//         this.handleFahrenheitChange = this.handleFahrenheitChange.bind(this);
+//         this.state ={temperature:'' , scale:'c'};
+//     }
+
+//    handleCelsiusChange(temperature){
+//        this.setState({scale:'c',temperature});
+//    }
+
+//    handleFahrenheitChange(temperature){
+//        this.setState({scale:'f',temperature });
+//    }
+
+
+//     render() {
+//          const scale = this.state.scale;
+//          const temperature = this.state.temperature;
+//          const celsius = scale === 'f' ? tryConvert(temperature, toCelsius) : temperature;
+//          const fahrenheit = scale === 'c' ? tryConvert(temperature, toFahrenheit) : temperature;
+
+//         return (
+//             <div>
+//                 <TemperatureInput 
+//                 scale="c" 
+//                 temperature ={celsius}
+//                 onTemperatureChange = {this.handleCelsiusChange}/>
+
+//                 <TemperatureInput
+//                 scale="f"
+//                 temperature ={fahrenheit}
+//                 onTemperatureChange = {this.handleFahrenheitChange} />
+
+//                 {/* <BoilingVerdict
+//                 celsius ={parseFloat(celsius)}/> */}
+//             </div>
+//         );
+//     }
+// }
+
+// render(
+//     <Calculator />,
+//     document.getElementById('root')
+// );
+
+
+//===========================================>
+
+// function toFirstPoint(PointXOne) {
+//     return PointXOne;
+// }
+
+// function toSecondPoint(PointYOne) {
+//     return PointYOne;
+// }
+
+// function tryConvert(cordinates,convert){
+//     const input = parseFloat(cordinates);
+//     if(Number.isNaN(input)){
+//         return '';
+//     }
+//     const output = convert(input);
+//     const rounded = Math.round(output * 1000)/1000;
+//     return rounded.toString();
+// }
+
+// const pointsNames = {
+//     x1: 'X1',
+//     y1: 'Y1',
+//     x2: 'X2',
+//     y2: 'Y2'
+// };
+
+
+// class CordinatesInput extends React.Component {
+//     constructor(props) {
+//         super(props);
+//         this.handleChange = this.handleChange.bind(this);
+//         this.state = {
+//             cordinatesX1: '',
+//             cordinatesY1: '',
+//             cordinatesX2: '',
+//             cordinatesY2: ''
+//         };
+//     }
+
+//     handleChange(e) {
+//         // this.setState({ temperature: e.target.value });
+//         this.props.onCordinatesChange(e.target.value);
+//     }
+
+//     render() {
+//         const cordinatesX1 = this.props.cordinatesX1;
+
+//         // const temperature = this.state.temperature;
+//         const points = this.props.points;
+//         return (
+//             <fieldset>
+//                 <legend>Enter cordinates in {pointsNames[points]}:</legend>
+//                 <input value={cordinatesX1}
+//                     onChange={this.handleChange} />
+//             </fieldset>
+//         );
+//     }
+// }
+
+// class Calculator extends React.Component {
+
+//     constructor(props) {
+//         super(props);
+//         this.handleXoneChange = this.handleXoneChange.bind(this);
+//         this.handleYoneChange = this.handleYoneChange.bind(this);
+//         this.state = {
+//             cordinatesX1: '',
+//             cordinatesY1: '',
+//             cordinatesX2: '',
+//             cordinatesY2: '',
+//             points: 'x1'
+//         };
+//     }
+
+//     handleXoneChange(cordinatesX1) {
+//         this.setState({ points1: 'x1', cordinatesX1 });
+//     }
+
+//     handleYoneChange(cordinatesY1) {
+//         this.setState({ points2: 'y1', cordinatesY1 });
+//     }
+
+//     handleXtwoChange(cordinatesX2) {
+//         this.setState({ points1: 'x2', cordinatesX2 });
+//     }
+
+//     handleYtwoChange(cordinatesY2) {
+//         this.setState({ points2: 'y2', cordinatesY2 });
+//     }
+
+
+//     render() {
+//         const points = this.state.points;
+//         const cordinatesX1 = this.state.cordinatesX1;
+//         const cordinatesY1 = this.state.cordinatesY1;
+//         const cordinatesX2 = this.state.cordinatesX2;
+//         const cordinatesY2 = this.state.cordinatesY2;
+//         //  const PointXOne = points === 'x1' ? tryConvert(cordinates, toFirstPoint) : cordinates;
+//         //  const PointYOne = points === 'y1' ? tryConvert(cordinates, toSecondPoint) : cordinates;
+
+//         return (
+//             <div>
+//                 <CordinatesInput
+//                     points="x1"
+//                     cordinatesX1=''
+//                     onCordinatesChange={this.handleXoneChange} />
+
+//                 <CordinatesInput
+//                     points="y1"
+//                     cordinatesY1=''
+//                     onCordinatesChange={this.handleYoneChange} />
+
+//                 <CordinatesInput
+//                     points="x2"
+//                     cordinatesX2=''
+//                     onCordinatesChange={this.handleXtwoChange} />
+
+//                 <CordinatesInput
+//                     points="y2"
+//                     cordinatesY2=''
+//                     onCordinatesChange={this.handleYtwoChange} />
+
+//                 {/* <BoilingVerdict
+//                 celsius ={parseFloat(celsius)}/> */}
+//             </div>
+//         );
+//     }
+// }
+
+// render(
+//     <Calculator />,
+//     document.getElementById('root')
+// );
+
+
+
+
+//===================================================>
+
+function Result(x1, y1, x2, y2) {
+    let x = x1 - x2;
+    let y = y1 - y2;
+    let xPow = Math.pow(x, 2);
+    let yPow = Math.pow(y, 2);
+    let result = xPow + yPow;
+    let output = Math.sqrt(result);
+    const sum = Math.round(output * 1000) / 1000;
+    return (sum);
+}
+
+class InputCordinator extends React.Component {
     constructor(props) {
-      super(props);
-      this.handleChange = this.handleChange.bind(this);
-      this.state = {temperature: ''};
+        super(props);
+        this.handlerIsNumber = this.handlerIsNumber.bind(this);
     }
-  
-    handleChange(e) {
-      this.setState({temperature: e.target.value});
-    }
-  
-    render() {
-      const temperature = this.state.temperature;
-      const scale = this.props.scale;
-      return (
-        <fieldset>
-          <legend>Enter temperature in {scaleNames[scale]}:</legend>
-          <input value={temperature}
-                 onChange={this.handleChange} />
-        </fieldset>
-      );
-    }
-  }
 
-  class Calculator extends React.Component {
-    render() {
-      return (
-        <div>
-          <TemperatureInput scale="c" />
-          <TemperatureInput scale="f" />
-        </div>
-      );
-    }
-  }
+  handlerIsNumber(e){
+      let ok = /\d+/;
+      let res = ok.test(e.target.value);
+      if(res === true){
+         this.props.onChange(e.target.value);
+      }
+      else if(res !== true){
+        alert('Your Cordinate is not valide ,put here number please !')
+        this.props.onChange('0')
+      }
 
-  render(
-      <Calculator/>,
-      document.getElementById('root')
-  );
+  }  
+    render() {
+
+        return (
+            <div>
+                <form >
+                    <label>
+                        {this.props.label}:
+                        <input type={this.props.type} value={this.props.value} onChange={this.handlerIsNumber} />
+                    </label>
+                    <br />
+                </form>
+            </div>
+        );
+    }
+}
+
+class Vision extends React.Component {
+
+    render() {
+        return (
+            <div>
+                <h1>{this.props.info}</h1>
+            </div>
+        );
+
+    }
+}
+
+
+class Cordinates extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            x1: '',
+            y1: '',
+            x2: '',
+            y2: ''
+
+        };
+
+        this.handleChangeX1 = this.handleChangeX1.bind(this);
+        this.handleChangeY1 = this.handleChangeY1.bind(this);
+        this.handleChangeX2 = this.handleChangeX2.bind(this);
+        this.handleChangeY2 = this.handleChangeY2.bind(this);
+
+    }
+
+    handleChangeX1(value) {
+        this.setState({ x1: value });
+    }
+
+    handleChangeY1(value) {
+        this.setState({ y1: value });
+    }
+
+    handleChangeX2(value) {
+        this.setState({ x2: value });
+    }
+
+
+    handleChangeY2(value) {
+        this.setState({ y2: value });
+    }
+
+
+
+    render() {
+        const x1 = this.state.x1;
+        const y1 = this.state.y1;
+        const x2 = this.state.x2;
+        const y2 = this.state.y2;
+        const info = Result(x1, y1, x2, y2);
+        return (
+            <div>
+                <InputCordinator label='X1' type="text" value={this.state.value} onChange={this.handleChangeX1} />
+                <InputCordinator label='Y1' type="text" value={this.state.value} onChange={this.handleChangeY1} />
+                <InputCordinator label='X2' type="text" value={this.state.value} onChange={this.handleChangeX2} />
+                <InputCordinator label='Y2' type="text" value={this.state.value} onChange={this.handleChangeY2} />
+
+                <Vision info={info} />
+            </div>
+        );
+    }
+
+}
+
+
+render(
+    <Cordinates/>,
+    document.getElementById('root')
+);
