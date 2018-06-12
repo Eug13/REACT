@@ -1,10 +1,12 @@
 import React from 'react'
 import { render } from 'react-dom'
 // import App from './components/App'
+import InputCordinator from './Base/InputCordinator'
+import Vision from'./Base/Vision'
 
 
 
-// render(<App/>,document.getElementById('root'));
+
 
 
 //Example 1  // Hello world
@@ -1117,51 +1119,51 @@ function Result(x1, y1, x2, y2) {
     return (sum);
 }
 
-class InputCordinator extends React.Component {
-    constructor(props) {
-        super(props);
-        this.handlerIsNumber = this.handlerIsNumber.bind(this);
-    }
+// class InputCordinator extends React.Component {
+//     constructor(props) {
+//         super(props);
+//         this.handlerIsNumber = this.handlerIsNumber.bind(this);
+//     }
 
-  handlerIsNumber(e){
-      let ok = /\d+/;
-      let res = ok.test(e.target.value);
-      if(res === true){
-         this.props.onChange(e.target.value);
-      }
-      else if(res !== true){
-        alert('Your Cordinate is not valide ,put here number please !')
-        this.props.onChange('0')
-      }
+//   handlerIsNumber(e){
+//       let ok = /\d+/;
+//       let res = ok.test(e.target.value);
+//       if(res === true){
+//          this.props.onChange(e.target.value);
+//       }
+//       else if(res !== true){
+//         console.error('Your input is not valid put here numbers only!')
+//         this.props.onChange('0')
+//       }
 
-  }  
-    render() {
+//   }  
+//     render() {
 
-        return (
-            <div>
-                <form >
-                    <label>
-                        {this.props.label}:
-                        <input type={this.props.type} value={this.props.value} onChange={this.handlerIsNumber} />
-                    </label>
-                    <br />
-                </form>
-            </div>
-        );
-    }
-}
+//         return (
+//             <div>
+//                 <form >
+//                     <label>
+//                         {this.props.label}:
+//                         <input type={this.props.type} value={this.props.value} onChange={this.handlerIsNumber} />
+//                     </label>
+//                     <br />
+//                 </form>
+//             </div>
+//         );
+//     }
+// }
 
-class Vision extends React.Component {
+// class Vision extends React.Component {
 
-    render() {
-        return (
-            <div>
-                <h1>{this.props.info}</h1>
-            </div>
-        );
+//     render() {
+//         return (
+//             <div>
+//                 <h1>{this.props.info}</h1>
+//             </div>
+//         );
 
-    }
-}
+//     }
+// }
 
 
 class Cordinates extends React.Component {
