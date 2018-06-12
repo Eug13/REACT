@@ -1,8 +1,8 @@
 import React from 'react'
 import { render } from 'react-dom'
 // import App from './components/App'
-import InputCordinator from './Base/InputCordinator'
-import Vision from'./Base/Vision'
+// import InputCordinator from './Base/InputCordinator'  //its for cordinates component
+// import Vision from'./Base/Vision'
 
 
 
@@ -1108,16 +1108,16 @@ import Vision from'./Base/Vision'
 
 //===================================================>
 
-function Result(x1, y1, x2, y2) {
-    let x = x1 - x2;
-    let y = y1 - y2;
-    let xPow = Math.pow(x, 2);
-    let yPow = Math.pow(y, 2);
-    let result = xPow + yPow;
-    let output = Math.sqrt(result);
-    const sum = Math.round(output * 1000) / 1000;
-    return (sum);
-}
+// function Result(x1, y1, x2, y2) {
+//     let x = x1 - x2;
+//     let y = y1 - y2;
+//     let xPow = Math.pow(x, 2);
+//     let yPow = Math.pow(y, 2);
+//     let result = xPow + yPow;
+//     let output = Math.sqrt(result);
+//     const sum = Math.round(output * 1000) / 1000;
+//     return (sum);
+// }
 
 // class InputCordinator extends React.Component {
 //     constructor(props) {
@@ -1166,65 +1166,381 @@ function Result(x1, y1, x2, y2) {
 // }
 
 
-class Cordinates extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            x1: '',
-            y1: '',
-            x2: '',
-            y2: ''
+// class Cordinates extends React.Component {
+//     constructor(props) {
+//         super(props);
+//         this.state = {
+//             x1: '',
+//             y1: '',
+//             x2: '',
+//             y2: ''
 
-        };
+//         };
 
-        this.handleChangeX1 = this.handleChangeX1.bind(this);
-        this.handleChangeY1 = this.handleChangeY1.bind(this);
-        this.handleChangeX2 = this.handleChangeX2.bind(this);
-        this.handleChangeY2 = this.handleChangeY2.bind(this);
+//         this.handleChangeX1 = this.handleChangeX1.bind(this);
+//         this.handleChangeY1 = this.handleChangeY1.bind(this);
+//         this.handleChangeX2 = this.handleChangeX2.bind(this);
+//         this.handleChangeY2 = this.handleChangeY2.bind(this);
 
-    }
+//     }
 
-    handleChangeX1(value) {
-        this.setState({ x1: value });
-    }
+//     handleChangeX1(value) {
+//         this.setState({ x1: value });
+//     }
 
-    handleChangeY1(value) {
-        this.setState({ y1: value });
-    }
+//     handleChangeY1(value) {
+//         this.setState({ y1: value });
+//     }
 
-    handleChangeX2(value) {
-        this.setState({ x2: value });
-    }
-
-
-    handleChangeY2(value) {
-        this.setState({ y2: value });
-    }
+//     handleChangeX2(value) {
+//         this.setState({ x2: value });
+//     }
 
 
+//     handleChangeY2(value) {
+//         this.setState({ y2: value });
+//     }
 
-    render() {
-        const x1 = this.state.x1;
-        const y1 = this.state.y1;
-        const x2 = this.state.x2;
-        const y2 = this.state.y2;
-        const info = Result(x1, y1, x2, y2);
-        return (
-            <div>
-                <InputCordinator label='X1' type="text" value={this.state.value} onChange={this.handleChangeX1} />
-                <InputCordinator label='Y1' type="text" value={this.state.value} onChange={this.handleChangeY1} />
-                <InputCordinator label='X2' type="text" value={this.state.value} onChange={this.handleChangeX2} />
-                <InputCordinator label='Y2' type="text" value={this.state.value} onChange={this.handleChangeY2} />
 
-                <Vision info={info} />
-            </div>
+
+//     render() {
+//         const x1 = this.state.x1;
+//         const y1 = this.state.y1;
+//         const x2 = this.state.x2;
+//         const y2 = this.state.y2;
+//         const info = Result(x1, y1, x2, y2);
+//         return (
+//             <div>
+//                 <InputCordinator label='X1' type="text" value={this.state.value} onChange={this.handleChangeX1} />
+//                 <InputCordinator label='Y1' type="text" value={this.state.value} onChange={this.handleChangeY1} />
+//                 <InputCordinator label='X2' type="text" value={this.state.value} onChange={this.handleChangeX2} />
+//                 <InputCordinator label='Y2' type="text" value={this.state.value} onChange={this.handleChangeY2} />
+
+//                 <Vision info={info} />
+//             </div>
+//         );
+//     }
+
+// }
+
+
+// render(
+//     <Cordinates/>,
+//     document.getElementById('root')
+// );
+
+
+
+
+//==================================================================================>
+//Composition vs Inharitance  10
+//==================================================================================>
+
+// function FancyBorder(props) {
+//     return (
+//         <div className={'FancyBorder FancyBorder-' + props.color}>
+//             {props.children}
+//         </div>
+//     );
+// }
+
+// function WelcomeDialog() {
+//     return (
+//         <FancyBorder color='blue'>
+//             <h1 className="Dialog-title">Welcome!</h1>
+//             <p>
+//                 Thank you for visiting our spacecraft!
+//            </p>
+//         </FancyBorder>
+//             );
+// }
+
+//------------------------------------------------------->
+
+// function SplitPane(props){
+//     return(
+//         <div className='SplitPane'>
+//            <div className='SplitPane-left'>
+//              {props.left}
+//            </div>
+//            <div className='SplitPane-right'>
+//              {props.right}
+//            </div>
+//         </div>
+//     );
+// }
+
+// function App(){
+//     return(
+//         <SplitPane
+//            left={
+//                <Contacts/>
+//            }
+//            right={
+//                <Chat/>
+//            }
+//         />
+//     );
+// }
+
+//------------------------------------------------------->
+
+// function Dialog(props){
+//     return(
+//         <FancyBorder color='blue'>
+//             <h1 className='Dialog-title'>
+//                 {props.title}
+//             </h1>
+//             <p className='Dialog-message'>
+//                 {props.message}
+//             </p>
+//         </FancyBorder>
+//     );
+// }
+
+// function WelcomeDialog(){
+//     return(
+//         <Dialog
+//             title='Welcome'
+//             message='Thank you for visiting our spacecraft!'
+//         />
+//     );
+// }
+
+//------------------------------------------------------->
+
+// function FancyBorder(props) {
+//     return (
+//         <div className={'FancyBorder FancyBorder-' + props.color}>
+//             {props.children}
+//         </div>
+//     );
+// }
+
+// function Dialog(props) {
+//     return (
+//         <FancyBorder color='blue'>
+//             <h1 className='Dialog-title'>
+//                 {props.title}
+//             </h1>
+//             <p className='Dialog-message'>
+//                 {props.message}
+//             </p>
+//                 {props.children}
+//         </FancyBorder>
+//     );
+// }
+
+// class SignUpDialog extends React.Component {
+//     constructor(props) {
+//         super(props);
+//         this.handleChange = this.handleChange.bind(this);
+//         this.handleSignUp = this.handleSignUp.bind(this);
+//         this.state = { login: '' };
+//     }
+//     render() {
+//         return (
+//             <Dialog title='Mars Exploration Program'
+//                 message='How should we refer to you?'>
+//                 <input value={this.state.login} onChange={this.handleChange} />
+//                 <button onClick={this.handleSignUp}>
+//                     Sign Me Up!
+//                 </button>
+//             </Dialog>
+
+//         );
+//     }
+
+//     handleChange(e) {
+//         this.setState({ login: e.target.value });
+//     }
+
+//     handleSignUp() {
+//         alert(`Welcome aboard , ${this.state.login}!`);
+//     }
+// }
+
+
+// render(
+//     <SignUpDialog />,
+//     document.getElementById('root')
+// );
+
+
+//===================================================================================>
+// THINKING IN REACT
+//===================================================================================>
+
+class ProductCategoryRow extends React.Component{
+    render(){
+        const category = this.props.category;
+        return(
+            <tr>
+                <th colSpan='2'>
+                    {category}
+                </th>   
+            </tr>
         );
     }
-
 }
 
 
+class ProductRow extends React.Component{
+    render(){
+        const product = this.props.product;
+        const name = product.stocked ? 
+        <span style={{color:'navy'}}>
+             {product.name}
+         </span> 
+              : 
+        <span style={{color:'red'}}>
+            {product.name}
+        </span>;
+        return(
+            <tr>
+                <td>{name}</td>
+                <td>{product.price}</td>
+            </tr>
+        );
+    }     
+}
+
+class ProductTable extends React.Component {
+    render() {
+        const filterText = this.props.filterText;
+        const inStockOnly = this.props.inStockOnly;
+
+        const rows = [];
+        let lastCategory = null;
+
+        this.props.products.forEach((product) => {
+            if(product.name.indexOf(filterText)===-1){
+                return;
+            }
+            if(inStockOnly && !product.stocked){
+                return;
+            }
+
+            if (product.category !== lastCategory) {
+                rows.push(
+                    <ProductCategoryRow
+                        category={product.category}
+                        key={product.category}
+                    />
+                );
+            }
+
+            rows.push(
+                <ProductRow
+                    product={product}
+                    key={product.name} />
+            );
+            lastCategory = product.category;
+        });
+
+        return (
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {rows}
+                </tbody>
+            </table>
+        );
+    }
+}
+
+
+class SearchBar extends React.Component {
+    render() {
+        const filterText = this.props.filterText;
+        const inStockOnly = this.props.inStockOnly;
+        const onChange = this.props.onChange;
+        const onChangeSearch = this.props.onChangeSearch;
+        return (
+            <form>
+                <input 
+                type='text' 
+                placeholder='Search...'
+                value={filterText}
+                onChange ={onChangeSearch}
+
+                 />
+                <p>
+                    <input
+                     type='checkbox'
+                     checked={inStockOnly}
+                     onChange ={onChange}
+                     />
+                    {''}
+                    Only show products in stock .
+              </p>
+            </form>
+        );
+    }
+}
+
+
+
+class FilterableProductTable extends React.Component {
+    constructor(props){
+        super(props);
+        this.handlerChange = this.handlerChange.bind(this);
+        this.handlerFilterText = this.handlerFilterText.bind(this);
+        this.state ={
+            filterText:' ',
+            inStockOnly:false
+        };
+    }
+
+handlerChange(e){
+    // console.log(e.target.checked);//returns true or false
+    this.setState({inStockOnly:e.target.checked})
+}
+
+handlerFilterText(e){
+    console.log(e.target.value);
+    this.setState({filterText:e.target.value})
+}
+
+    render() {
+        return (
+            <div>
+                <SearchBar 
+                    // filterText={this.handlerFilterText}
+                    filterText={this.state.filterText}
+                    inStockOnly={this.state.inStockOnly}
+                    onChange ={this.handlerChange}
+                    onChangeSearch ={this.handlerFilterText}
+                />
+                <ProductTable 
+                products={this.props.products} 
+                filterText = {this.state.filterText}
+                inStockOnly = {this.state.inStockOnly}
+                />
+            </div>
+        );
+    }
+}
+
+const PRODUCTS = [
+    { category: "Sporting Goods", price: "$49.99", stocked: true, name: "Football" },
+    { category: "Sporting Goods", price: "$9.99", stocked: true, name: "Baseball" },
+    { category: "Sporting Goods", price: "$29.99", stocked: false, name: "Basketball" },
+    { category: "Electronics", price: "$99.99", stocked: true, name: "iPod Touch" },
+    { category: "Electronics", price: "$399.99", stocked: false, name: "iPhone 5" },
+    { category: "Electronics", price: "$199.99", stocked: true, name: "Nexus 7" },
+    { category: "Food", price: "$99.99", stocked: false, name: "Golden Chicken" },
+    { category: "Food", price: "$399.99", stocked: false, name: "Golden Milk" },
+    { category: "Food", price: "$199.99", stocked: false, name: "Golden Big Mac" }
+];
+
+
 render(
-    <Cordinates/>,
+    <FilterableProductTable products={PRODUCTS}/>,
     document.getElementById('root')
 );
